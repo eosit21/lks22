@@ -9,12 +9,12 @@ exports.handler = async (event) => {
         if(event.httpMethod === 'POST'){
             let requestData = JSON.parse(event.body);
             const crypto = require("crypto");
-            const id = crypto.randomBytes(16).toString("hex");
+            const id_jobs = crypto.randomBytes(16).toString("hex");
             await dynamo
               .put({
                 TableName: tableName,
                 Item: {
-                  id: id,
+                  id_jobs: id_jobs,
                   title: requestData.title,
                   message: requestData.message,
                 }
